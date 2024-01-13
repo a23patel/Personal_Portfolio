@@ -31,6 +31,8 @@
 
 }
 
+/* Styles for all the sections */
+
 html{
     font-size:62.5%;
     overflow-x:hidden;
@@ -38,7 +40,7 @@ html{
 
 body{
     font-family: "Poppins", sans-serif;
-    background-color: var(--bg-color);
+    background-color: #510B41;
     color:var(--text-color);
 }
 
@@ -249,85 +251,19 @@ section{
     text-align:center;
 }
 
-.skill-left .skill-bar .info{
+.skill-left .skill-tech .info{
     display:flex;
-    justify-content: space-between;
     align-items:center;
     padding:0 10px;
 }
 
 
+
 .skill-left p{
-    font-size:1.3rem;
-}
-.skill-left .skill-bar .bar{
-    width:100%;
-    height:10px;
-    background-color: var(--secon-bg-color);
-    border-radius:25px;
-    margin-top:10px;
-    position: relative;
+    font-size:15px;
+    font-weight:500;
 }
 
-.skill-bar .bar span{
-    width:50%;
-    height:100%;
-    position: absolute;
-    left:0;
-    background: var(--hover-color);
-    border-radius:25px;
-    box-shadow: var(--neon-box-shadow);
-}
-
-.skill-bar .bar .python{
-    width:92%;
-    animation: python 2s;
-}
-
-.skill-bar .bar .cplusplus{
-    width:90%;
-    animation: cplusplus 3s;
-}
-
-.skill-bar .bar .csharp{
-    width:60%;
-    animation: csharp 4s;
-}
-
-.skill-bar .bar .javascript{
-    width:82%;
-    animation: javascript 5s;
-}
-
-.skill-bar .bar .sql{
-    width:86%;
-    animation: sql 6s;
-}
-
-.skill-bar .bar .html{
-    width:85%;
-    animation: html 7s;
-}
-
-.skill-bar .bar .php{
-    width:57%;
-    animation: php 8s;
-}
-
-.skill-bar .bar .tableau{
-    width:72%;
-    animation: tableau 9s;
-}
-
-.skill-bar .bar .r{
-    width:70%;
-    animation: r 10s;
-}
-
-.skill-bar .bar .css{
-    width:88%;
-    animation: css 11s;
-}
 
 .professional{
     display:grid;
@@ -389,17 +325,23 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
 
 
 .projects h2{
-    margin-bottom:4rem;
+    margin-bottom:3rem;
     text-align: center;
     font-size: 24px;
 
 }
 
+.projects h3{
+    text-align:center;
+    font-size:17px;
+}
+
 .project-container{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     align-items:center;
     gap:2.9rem;
+    width:100%;
 }
 
 .project-container .project-box{
@@ -427,34 +369,42 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
     top:0;
     width:100%;
     height:100%;
-    background:linear-gradient(rgba(0,0,0,0.23), var(--secon-bg-color));
+    background:linear-gradient(rgba(0,0,0,0.30), var(--secon-bg-color));
     display:flex;
     overflow:hidden;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     padding:30px;
-    transform:translateY(100%);
-    transition:0.5s ease;
-
 }
 
-.project-box:hover .project-layer{
-    transform:translateY(0);
+.project-box .project-layer p,
+.project-box .project-layer img,
+.project-box .project-layer a{
+    opacity:0;
+    transition:opacity 0.4s ease;
 }
 
-.project-box .project-layer h4,
+.project-box:hover .project-layer p,
+.project-box:hover .project-layer img,
+.project-box:hover .project-layer a{
+    opacity:1;
+}
+
 .project-box .project-layer p {
     text-align: center; 
     color: white; 
-    font-weight: 700;
-    margin-top: 3px;
-    font-size:13px;
+    font-weight: 650;
+    margin-top: 2.5px;
+    font-size:9.5px;
     
 }
 
 .project-box .project-layer h4{
     text-decoration: underline;
+    font-size:11px;
+    font-weight:700;
+    text-align:center;
 }
 
 .project-box .project-layer img {
@@ -581,8 +531,125 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
 }
 
 
+/* Styles for theme toggle button */
 
-/* Media screens (in order to make website more responsive)  */
+#theme-toggle {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#slider {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.3s;
+}
+
+#theme-toggle i {
+    font-size: 24px;
+    margin-right: 5px;
+    transition: opacity 0.3s;
+}
+
+#sun-icon, #moon-icon {
+    color:yellow;
+}
+
+#theme-text {
+    margin-left: 5px;
+    font-weight:500;
+    font-size:14px;
+}
+
+
+#theme-toggle.light-mode #slider {
+    transform: translateX(100%);
+}
+
+#theme-toggle.light-mode #sun-icon {
+    opacity: 1;
+    margin-left:0;
+}
+
+#theme-toggle.light-mode #moon-icon {
+    opacity: 0;
+    margin-right:5px;
+}
+
+.light-mode {
+    background-color: #F4A7E2 ;
+    color: black;
+}
+
+.light-mode .logo{
+    color:var(--text-color);
+}
+
+.light-mode span{
+    color: rgb(5, 82, 5);
+}
+
+.light-mode .logo span{
+    color:var(--hover-color);
+}
+
+.light-mode #theme-text{
+    color:rgb(53, 250, 138);
+}
+
+.light-mode .btn{
+    background: rgb(23, 214, 100);
+    border-radius:4rem;
+    box-shadow:0 0 1 rgb(5, 5, 243);
+}
+
+.light-mode .social-icons a{
+     border: 0.2rem solid rgb(78, 241, 78);
+     color:#0a5312;
+}
+
+.light-mode .social-icons a:hover{
+    background: rgb(78, 241, 78);
+    box-shadow: 0 0 5rem #0a5312;
+    border: 2px solid #0a5312;
+}
+
+.light-mode .skills .main-text h2 {
+    color:rgb(103, 103, 6);
+}
+
+
+.light-mode .box .text{
+    color:black;
+}
+
+.light-mode .points.marked{
+    animation:glow-light-mode 0.04s linear forwards;
+    animation-delay: calc(var(--i)*0.05s);
+}
+
+.light-mode .project-box .project-layer h4{
+    color:white;
+}
+
+
+.light-mode .contact form .input-box input,
+.light-mode .contact form  textarea{
+    background-color: rgb(247, 205, 126);
+}
+
+
+.light-mode .footer-text #copyright{
+    color:white;
+}
+
+
+/* Media screens (in order to make website responsive)  */
 
 @media (max-width: 1200px){
     html{
@@ -672,6 +739,12 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
     .skills-main{
         grid-template-columns: 1fr;
     }
+
+    .skill-left p{
+    font-size:8.5px;
+    font-weight:550;
+    }
+
     .project-container{
         grid-template-columns: repeat(2, 1fr);
 
@@ -720,6 +793,18 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
     .contact form .input-box input{
         width:100%;
     }
+
+    .skill-left p{
+    font-size:8.5px;
+    font-weight:550;
+    }
+
+    .project-box .project-layer p,
+    .project-box .project-layer img,
+    .project-box .project-layer a{
+        opacity:1;
+    }
+
 }
 
 @media (max-width:365px){
@@ -739,99 +824,17 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
         text-align: center;
         margin-top: 2rem;
     }
+
+    .project-box .project-layer p,
+    .project-box .project-layer img,
+    .project-box .project-layer a{
+        opacity:1;
+    }
+
 }
 
 
 /* Keyframes (for the animations) */
-@keyframes python{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:92%
-    }
-}
-
-@keyframes cplusplus{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:89%
-    }
-}
-
-@keyframes csharp{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:60%
-    }
-}
-
-@keyframes javascript{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:78%
-    }
-}
-
-@keyframes sql{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:86%;
-    }
-}
-
-@keyframes html{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:88%
-    }
-}
-
-@keyframes php{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:57%
-    }
-}
-
-@keyframes tableau{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:71%
-    }
-}
-
-@keyframes r{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:70%
-    }
-}
-
-@keyframes css{
-    0%{
-        width:0%;
-    }
-    100%{
-        width:87%
-    }
-}
 
 @keyframes glow{
     0%{
@@ -841,6 +844,19 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
     100%{
         background: var(--hover-color);
         box-shadow:var(--neon-box-shadow);
+    }
+
+}
+
+/*Keyframe for light-mode*/
+@keyframes glow-light-mode {
+    0% {
+        background:var(--secon-bg-color);
+        box-shadow:none;
+    }
+    100% {
+        background: blue;
+        box-shadow: var(--neon-box-shadow);
     }
 }
 

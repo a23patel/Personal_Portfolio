@@ -74,19 +74,66 @@ circles.forEach(elem=>{
 
 
     ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-    ScrollReveal().reveal('.home-image, .skills-main, .project-box, .contact form', { origin: 'bottom' });
+    ScrollReveal().reveal('.home-image, .skills-main, .project-box, .contact form, .projects h3', { origin: 'bottom' });
     ScrollReveal().reveal('.home-content h1, .about-image', { origin: 'left' });
     ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
     /* ----------Typed JS for displaying multiple texts---------------*/
     const typed = new Typed('.multiple-texts', {
-        strings: ['Passionate Programmer', 'Aspiring Software Developer', 'Aspriring Software Engineer', 'Aspiring Data Analyst', 'Aspiring Frontend Developer', 'Aspiring Web Designer'],
+        strings: ['a Passionate Programmer', 'an Aspiring Software Developer', 'an Aspriring Software Engineer', 'an Aspiring Data Analyst', 'an Aspiring Frontend Developer', 'an Aspiring Web Developer'],
         typeSpeed:50,
         backSpeed:85,
         backDelay:500,
         loop:true
     });
 
+    /* ----------Functionality for changing the mode or theme of the website---------------*/
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        updateSliderPosition();
+        updateThemeText();
+        toggleIcon();
+    });
 
+    function updateSliderPosition() {
+        const isLightMode = body.classList.contains('light-mode');
+        const slider = document.getElementById('slider');
+        slider.style.transform = isLightMode ? 'translateX(100%)' : 'translateX(0)';
+    }
 
+    function updateThemeText() {
+        const isLightMode = body.classList.contains('light-mode');
+        const themeText = document.getElementById('theme-text');
+
+        if (isLightMode) {
+            themeText.textContent = 'Light Mode';
+        } else {
+            themeText.textContent = 'Dark Mode';
+        }
+}
+
+    function toggleIcon() {
+        const isLightMode = body.classList.contains('light-mode');
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.getElementById('moon-icon');
+
+        if (isLightMode) {
+            moonIcon.remove();
+            const newSunIcon = document.createElement('i');
+            newSunIcon.className = 'fas fa-sun';
+            newSunIcon.id = 'sun-icon';
+            themeToggle.insertBefore(newSunIcon, themeToggle.firstChild);
+        } else {
+            const sunIcon = document.getElementById('sun-icon');
+            if (sunIcon) {
+                sunIcon.remove();
+                const newMoonIcon = document.createElement('i');
+                newMoonIcon.className = 'fas fa-moon';
+                newMoonIcon.id = 'moon-icon';
+                themeToggle.insertBefore(newMoonIcon, themeToggle.firstChild);
+            }
+        }
+    }
