@@ -582,7 +582,7 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
 }
 
 .light-mode {
-    background-color: #F4A7E2 ;
+    background-color: #d0a9d0 ;
     color: black;
 }
 
@@ -609,12 +609,12 @@ transform:rotate(calc(var(--i)*var(--rot))) translateY(-45px);
 }
 
 .light-mode .social-icons a{
-     border: 0.2rem solid rgb(78, 241, 78);
+     border: 0.19rem solid rgb(27, 104, 27);
      color:#0a5312;
 }
 
 .light-mode .social-icons a:hover{
-    background: rgb(78, 241, 78);
+    background: rgb(128, 240, 128);
     box-shadow: 0 0 5rem #0a5312;
     border: 2px solid #0a5312;
 }
